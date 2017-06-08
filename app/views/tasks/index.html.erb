@@ -1,0 +1,52 @@
+<center><p id="notice"><%= notice %></p></center>
+
+<div class="col-md-6">
+
+  <h1>Super-Duper TooDoo</h1>
+  <br>
+
+  <h4>New Task</h4>
+  <%= render 'form', task: @task %>
+  <br>
+  <h4>All Tasks</h4>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @tasks.each do |task| %>
+        <tr>
+          <td><%= task.name %></td>
+          <td><%= link_to 'Show', task %></td>
+          <td><%= link_to 'Edit', edit_task_path(task), remote: true %></td>
+          <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Edit Task</h4>
+      </div>
+      <div class="modal-body">
+        <p>One fine body&hellip;</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" id="submit-button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<br>
